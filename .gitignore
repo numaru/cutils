@@ -1,0 +1,7 @@
+# Test runners
+test/*/runner
+
+# Coverage files
+*.gcda
+*.gcno
+*.gcov
