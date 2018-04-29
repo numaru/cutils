@@ -27,10 +27,6 @@ $(RUNNERS): $(SOURCES) $$(addsuffix main.c, $$(dir $$@))
 test: $(RUNNERS)
 	for runner in $(RUNNERS); do $$runner; done
 
-.PHONY: coverage
-coverage: test
-	for test in $(TESTS); do cd $$test; gcov main.c; cd ..; done
-
 .PHONY: clean
 clean:
 	rm -rf */*.o */*.i */*.s */*.gcno */*.gcda */*.gcov $(RUNNERS)
