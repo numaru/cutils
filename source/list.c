@@ -90,9 +90,7 @@ signed
 list_iterator_get_next(const struct list_iterator * self, struct list_iterator * ret)
 {
   unsigned index = self->index;
-  if (list_iterator_init(ret, self->collection) != 0) {
-    return 2;
-  }
+  list_iterator_init(ret, self->collection);
   if (index < ret->length) {
     ret->index = index + 1;
     return 0;
