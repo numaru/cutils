@@ -16,6 +16,8 @@ typedef void (*test_step_t)(void);
 void setup(void);
 void teardown(void);
 
+static bool error_happend = 0;
+
 static inline signed
 test_assert_ex(bool stmt, const char * function, signed line,
                const wchar_t * file)
@@ -33,6 +35,7 @@ test_expect_ex(bool stmt, const char * function, signed line,
 {
   if (!stmt) {
     wprintf(L"%ls:%d: Wrong expect statement in %s(void)\n", file, line, function);
+    error_happend = true;
   } 
   return 0;
 }
@@ -45,7 +48,7 @@ test_run(const test_step_t * steps, size_t steps_size)
     steps[i]();
     teardown();
   }
-  return 0;
+  return error_happend;
 }
 
 #endif /* _TEST_H */
