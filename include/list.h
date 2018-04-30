@@ -22,12 +22,30 @@ signed
 list_cleanup(struct list * self);
 
 signed
-list_get_data(struct list * self, void ** ret, unsigned index);
+list_get_data(const struct list * self, void ** ret, unsigned index);
 
 signed
-list_get_length(struct list * self, unsigned * ret);
+list_get_length(const struct list * self, unsigned * ret);
 
 signed
 list_append(struct list * self, void * data);
+
+struct list_iterator {
+  const struct list * collection;
+  unsigned length;
+  unsigned index;
+};
+
+signed
+list_iterator_init(struct list_iterator * self, const struct list * collection);
+
+signed
+list_iterator_cleanup(struct list_iterator * self);
+
+signed
+list_iterator_get_data(const struct list_iterator * self, void ** ret);
+
+signed
+list_iterator_get_next(const struct list_iterator * self, struct list_iterator ** ret);
 
 #endif /* _LIST_H */

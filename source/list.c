@@ -21,7 +21,7 @@ list_cleanup(struct list * self)
 }
 
 signed
-list_get_data(struct list * self, void ** ret, unsigned index)
+list_get_data(const struct list * self, void ** ret, unsigned index)
 {
   struct list_node * node;
   unsigned i;
@@ -36,7 +36,7 @@ list_get_data(struct list * self, void ** ret, unsigned index)
 }
 
 signed
-list_get_length(struct list * self, unsigned * ret)
+list_get_length(const struct list * self, unsigned * ret)
 {
   unsigned length = 0;
   struct list_node * node;
@@ -63,4 +63,35 @@ list_append(struct list * self, void * data)
     return 0;
   }
   return 1;
+}
+
+signed
+list_iterator_init(struct list_iterator * self, const struct list * collection)
+{
+  self->collection = collection;
+  self->index = 0;
+  self->length = 0;
+  return list_get_length(self->collection, &self->length);
+}
+
+signed
+list_iterator_cleanup(struct list_iterator * self)
+{
+  return 0;
+}
+
+signed
+list_iterator_get_data(const struct list_iterator * self, void ** ret)
+{
+  return list_get_data(self->collection, ret, self->index);
+}
+
+signed
+list_iterator_next(const struct list_iterator * self, struct list_iterator * ret)
+{
+  if (list_iterator_init(ret, self->collection) != 0) {
+    return 1;
+  }
+  ret->index = self->index;
+  return 0;
 }
