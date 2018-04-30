@@ -25,7 +25,7 @@ $(RUNNERS): $(SOURCES) $$(addsuffix main.c, $$(dir $$@))
 
 .PHONY: test
 test: $(RUNNERS)
-	for runner in $(RUNNERS); do $$runner; done
+	error=0; for runner in $(RUNNERS); do if ! $$runner; then error=1; fi; done; exit $$error
 
 .PHONY: clean
 clean:
