@@ -8,7 +8,6 @@ pool_init(struct pool * self, void * data, size_t data_size, size_t node_size)
   self->data = data;
   self->data_size = data_size;
   self->node_size = node_size;
-
   size_t begin = (size_t)self->data;
   size_t end = begin + self->data_size;
   for (size_t addr = begin; addr < end; addr += self->node_size) {
