@@ -91,8 +91,13 @@ list_iterator_get_next(const struct list_iterator * self, struct list_iterator *
 {
   unsigned index = self->index;
   if (list_iterator_init(ret, self->collection) != 0) {
+    return 2;
+  }
+  if (index < ret->length) {
+    ret->index = index + 1;
+    return 0;
+  } else {
+    ret->index = ret->length;
     return 1;
   }
-  ret->index = index + 1;
-  return 0;
 }

@@ -138,6 +138,9 @@ test_list_iterator_get_next(void)
   test_expect(pool_init(&pool, nodes, sizeof(nodes), sizeof(nodes[0])) == 0);
   test_expect(list_init(&list, &pool) == 0);
   test_expect(list_iterator_init(&first_it, &list) == 0);
+  test_expect(list_iterator_get_next(&first_it, &first_it) == 1);
+  test_expect(list_iterator_get_data(&first_it, (void**)&output) == 1);
+  test_expect(output == NULL);
   test_expect(list_append(&list, &variables[0]) == 0);
   test_expect(list_append(&list, &variables[1]) == 0);
   test_expect(list_append(&list, &variables[2]) == 0);
