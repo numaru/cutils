@@ -83,11 +83,32 @@ test_list_append()
   test_expect(pool_cleanup(&pool) == 0);
 }
 
+static void
+test_list_iterator_init_and_cleanup(void)
+{
+  test_expect(1 == 0);
+}
+
+static void
+test_list_iterator_get_data(void)
+{
+
+}
+
+static void
+test_list_iterator_get_next(void)
+{
+
+}
+
 static const test_step_t test_steps[] = {
   &test_list_init_and_cleanup,
   &test_list_get_data,
   &test_list_get_length,
-  &test_list_append
+  &test_list_append,
+  &test_list_iterator_init_and_cleanup,
+  &test_list_iterator_get_data,
+  &test_list_iterator_get_next
 };
 
 void
