@@ -87,11 +87,12 @@ list_iterator_get_data(const struct list_iterator * self, void ** ret)
 }
 
 signed
-list_iterator_next(const struct list_iterator * self, struct list_iterator * ret)
+list_iterator_get_next(const struct list_iterator * self, struct list_iterator * ret)
 {
+  unsigned index = self->index;
   if (list_iterator_init(ret, self->collection) != 0) {
     return 1;
   }
-  ret->index = self->index;
+  ret->index = index + 1;
   return 0;
 }

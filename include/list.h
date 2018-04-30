@@ -46,6 +46,6 @@ signed
 list_iterator_get_data(const struct list_iterator * self, void ** ret);
 
 signed
-list_iterator_get_next(const struct list_iterator * self, struct list_iterator ** ret);
+list_iterator_get_next(const struct list_iterator * self, struct list_iterator * ret);
 
 #endif /* _LIST_H */
