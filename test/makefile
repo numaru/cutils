@@ -7,7 +7,7 @@ SOURCES = $(wildcard ../source/*.c)
 # Put C settings (-I, -D, etc) here
 CFLAGS = -I$(INCLUDES)
 # Put compiler settings here
-CCFLAGS = -std=c11 -Wall
+CCFLAGS = -std=c11 -Wall -g
 CCFLAGS += -ftest-coverage -fprofile-arcs -O0
 # Put linker settings here
 LDFLAGS = -lgcov -coverage
